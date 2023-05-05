@@ -1,0 +1,179 @@
+.generic-okay-form {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: rgb(40 44 52);
+    border: 1px solid rgb(56, 56, 56);
+    border-radius: 5px;
+    box-shadow: 0px 0px 40px -10px #000;
+    color: #fff;
+    height: 25%;
+    min-height: 200px;
+    width: 25%;
+    z-index: 999;
+}
+.generic-okay-form form {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.generic-okay-form form hr {
+    flex-basis: 100%;
+    height: 1px;
+}
+.generic-okay-form .form-field-title {
+    padding: 20px 20px 0 20px;
+}
+.generic-okay-form .form-field-description {
+    padding: 0 20px 0 20px
+}
+.generic-okay-form .button-group {
+    text-align: center;
+    padding: 0px 20px 20px 20px;
+    width: calc(100% - 40px);
+}
+.generic-okay-form .button-group button {
+    background-color: #006c00;
+    border: 1px solid #00d100;
+    color: #fff;
+    font-size: 26px;
+    width: 200px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px 0px #000;
+    height: 100%;
+}
+.generic-okay-form .button-group button:hover {
+    background-color: #00d100;
+}
+.generic-okay-form .button-group button:active {
+    background-color: #004400;
+}
+
+.form-container-login-register {
+    margin: 0 auto;
+    width: 200px;
+}
+.form-container-login-register ::placeholder {
+    font-style: italic;
+}
+.form-container-login-register > form {
+    display: flex;
+    flex-wrap: wrap;
+}
+.form-container-login-register > form .error-message {
+    color: red;
+    font-size: 0.4em;
+    margin: 0 auto;
+    padding: 10px 2px;
+}
+.form-container-login-register > form > .form-group-inputs {
+    flex-basis: 100%;
+}
+.form-container-login-register > form > .form-group-inputs > .field-group {
+    flex-basis: 100%;
+    padding: 5px 0;
+}
+.form-container-login-register > form > .form-group-inputs > .field-group input {
+    background-color: #282c34;
+    border: 0;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+}
+.form-container-login-register > form > hr {
+    flex-basis: 100%;
+}
+.form-container-login-register > form > .button-group {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.form-container-login-register > form > .button-group > button {
+    background-color: #282c34;
+    border: 1px solid white;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    width: 33%;
+}
+.form-container-login-register > form > .button-group > button:hover {
+    background-color: #181b20;
+}
+
+.password-container {
+    position: relative;
+}
+.password-container .show-hide {
+    position: relative;
+}
+/* Customize the label (the .password- .show-hide) */
+.password-container .show-hide {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    user-select: none;
+    top: 50%;
+    right: 0;
+    transform: translate(120%, -30%);
+    height: 25px;
+    width: 25px;
+}
+
+/* Hide the browser's default checkbox */
+.password-container .show-hide input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.password-container .show-hide:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.password-container .show-hide input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.show-hide .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.password-container .show-hide input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.password-container .show-hide .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

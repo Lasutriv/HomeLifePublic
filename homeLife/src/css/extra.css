@@ -1,0 +1,21 @@
+.color-scheme-switches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.color-scheme-switches i.fa-palette {
+    color: #008fff;
+    font-size: 32px;
+    flex-basis: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.color-scheme-switches .swatches-picker {
+    width: 150px;
+}
+
+.swatches-picker {
+
+}

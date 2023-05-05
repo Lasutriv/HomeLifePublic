@@ -1,0 +1,89 @@
+version: "3.8"
+services:
+  api:
+    build: ./api
+    container_name: homeLife_api_c
+    ports:
+      - '7778:7778'
+    volumes:
+      - /api/node_modules
+      - ./api:/api
+    networks:
+      - back
+  db:
+    image: mysql
+    container_name: homeLife_mysql_c
+    # https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
+    # Run in mysql in container: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<password here>';
+    # Run in mysql in container IF ON LINUX: ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY '<password here>';
+    # Run: FLUSH PRIVILEGES;
+    # NOTE: Above we remove @'localhost' for debian based systems.
+    restart: always
+    environment:
+      MYSQL_DATABASE: db_homeLife
+      # MYSQL_USER: root  # MYSQL_USER="root", MYSQL_USER and MYSQL_PASSWORD are for configuring a regular user and cannot be used for the root user
+      # MYSQL_PASS: <password here>
+      MYSQL_ROOT_PASSWORD: <password here>
+    ports:
+      - "3308:3306"
+    volumes:
+      - ~/apps/mysql:/var/lib/mysql
+    networks:
+      - back
+  homelife:
+    build: ./homeLife
+    container_name: homeLife_c
+    ports:
+    # 3000 is react's default port - containerport/hostport - 7777 is production's due to how we configured production
+      - '7777:3000'
+    volumes:
+      - /app/node_modules
+      - ./homeLife:/app  # /dir/on/host:/dir/on/container
+      # This doesn't work entirely. When updating prod site, we'll need to build the files and place them in 
+      # /certbot/www
+      - ./certbot/www:/app/build
+    networks:
+      - back
+    stdin_open: true
+    tty: true
+  webserver:
+    # Letsencrypt and certbot in docker - https://mindsers.blog/post/https-using-nginx-certbot-docker/
+    # Init certbox command - docker run -it --rm -v /docker-volumes/etc/letsencrypt:/etc/letsencrypt -v /docker-volumes/var/lib/letsencrypt:/var/lib/letsencrypt -v /docker/letsencrypt-docker-nginx/src/letsencrypt/letsencrypt-site:/data/letsencrypt -v "/docker-volumes/var/log/letsencrypt:/var/log/letsencrypt" certbot/certbot certonly --webroot --register-unsafely-without-email --agree-tos --webroot-path=/data/letsencrypt --staging -d myhomelife.app -d www.myhomelife.app
+    container_name: 'letsencrypt-nginx-container'
+    image: nginx:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    networks:
+      - back
+  certbot:
+    container_name: 'certbot-container'
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+    networks:
+      - back
+networks:
+  back:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
+          gateway: 172.16.238.1
+
+# NOTES: 
+# 'docker-compose up' will spin up the containers defined above.
+# 'docker-compose down' will stop the containers that were spun up but will not delete them.
+# 'docker-compose down -rmi all -v' will stop and delete all images, containers, and volumes created with the services.
+# 'docker system prune -a' does the same as above
+
+# VOLUMES NOTES:
+# The older of the volumes matters. If we want to omit a volume, it should be added before the copy/volume linking for
+# any other volumes are setup.

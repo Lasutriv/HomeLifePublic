@@ -1,0 +1,67 @@
+.column-content h4 {
+    display: flex;
+    justify-content: space-between;
+}
+.column-content h4 > div {
+    
+}
+.column-content h4, .column-content p {
+    padding: 0;
+    margin: 0;
+}
+
+.content-bill .extra-info.hidden {
+    display: none;
+}
+.content-bill .extra-info {
+    display: block;
+}
+.content-bill.overview-bills i.fa-x {
+    top: 50%;
+    transform: translate(0px, -50%);
+}
+.bill-header-left {
+    overflow: auto;
+}
+
+/* Overview bills */
+.content-bill.overview-bills h4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-right: 25px;
+}
+.content-bill.overview-bills h4 > div {
+    font-size: 0.5em;
+    line-height: 1em;
+    flex-basis: 33%;
+}
+
+/* Upcoming bills */
+.column-content.display-grid .content-bill.upcoming-bills h4 .bill-header-left,
+.column-content.display-list .content-bill.upcoming-bills h4 .bill-header-left {
+    flex-basis: calc(48% - 25px);
+}
+.content-bill.upcoming-bills h4 .bill-header-right {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: right;
+    align-content: space-between;
+    margin-right: 25px;
+}
+.column-content.display-grid .content-bill.upcoming-bills h4 .bill-header-right,
+.column-content.display-list .content-bill.upcoming-bills h4 .bill-header-right {
+    flex-basis: 48%;
+}
+.content-bill.upcoming-bills h4 .bill-header-right {
+    margin-right: 25px;
+}
+.content-bill.upcoming-bills h4 .dueDate, .content-bill.upcoming-bills h4 .amount {
+    flex-basis: 100%;
+    font-size: 1em;
+    line-height: 0.9em;
+}
+.column-content.display-grid .content-bill.upcoming-bills h4 .dueDate,
+.column-content.display-grid .content-bill.upcoming-bills h4 .amount {
+    font-size: 0.7em;
+}
