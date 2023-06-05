@@ -7,11 +7,12 @@ A dockerized system containing the front-end, backend, and SSL cert engine utili
 Integrate all personal projects and home automation into 1 app that is responsive to all devices that connect to the app on the local network.
 
 # The Stack
-- Docker with 4 containers
+- Docker with 5 containers
   - App container (React)
   - Web server container (Nginx)
   - Database container (MySQL)
   - Certbot container (For auto SSL)
+  - API (Express)
 
 ## Software to integrate
 - [Open World Weather](https://github.com/Lasutriv/Open-World-Weather)
