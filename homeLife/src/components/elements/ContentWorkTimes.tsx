@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import moment from "moment";
 import { WorkTime } from "./WorkTime";
 import { getCorrectDomain, _settings } from "../../AppSettings";
 
@@ -12,9 +11,9 @@ interface IWorkTimeProp {
     dayOfWork: string
 }
 
-function ContentWorkTimes({filterAsc}) {
+function ContentWorkTimes({filterAsc, isReload, setIsReload}) {
     const [workTimes, setWorkTimes] = useState([]);
-    const [currentDate, setDate] = useState(`${moment().format("MMM do, YYYY")}`);
+    // const [currentDate, setDate] = useState(`${moment().format("MMM do, YYYY")}`);
     const [isAPIDown, setIsAPIDown] = useState(true);
 
     // Update worktimes data based on filters
@@ -22,6 +21,7 @@ function ContentWorkTimes({filterAsc}) {
         let filteredData = filterAggregateWorktimes(workTimes);
 
         setWorkTimes(filteredData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterAsc])
 
     // Grab data from our app's api
@@ -66,6 +66,7 @@ function ContentWorkTimes({filterAsc}) {
 
                 setWorkTimes(aggregatedWorktimes);
                 setIsAPIDown(false);
+                setIsReload(false);
             }).catch(function (error) {
                 console.log("API Worktime fetch error: '" + JSON.stringify(error) + "'.");
                 console.log("Is return equal to 'TypeError: Failed to fetch': " + (error === "TypeError: Failed to fetch"));
@@ -76,7 +77,8 @@ function ContentWorkTimes({filterAsc}) {
         } catch (error) {
             // console.log("API Tasks fetch error: " + error);
         }
-	}, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isReload]);
 
     useEffect(() => {
         if (_settings.IS_CONSTANT_LOADING_ENABLED) {
@@ -130,7 +132,8 @@ function ContentWorkTimes({filterAsc}) {
                 clearInterval(interval);
             };
         }
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isReload]);
 
     const deleteWorkTime = (dayOfWork: string) => {
         setWorkTimes(workTimes.filter((worktime: IWorkTimeProp) => worktime.dayOfWork !== dayOfWork));
@@ -164,93 +167,102 @@ function ContentWorkTimes({filterAsc}) {
     const getAggregateWorktimes = (data) => {
         let tempData = data;
         let aggregatedWorktimes = [];
-        data[0].map((worktime: IWorkTimeProp) => {
-            // For each worktime, check for other worktimes on the same day. If there is any,
-            // then combine them if you can.
-            let newWorktime: IWorkTimeProp = {
-                "id": "",
-                "userId": "",
-                "clockInTime": "",
-                "clockOutTime": "",
-                "hasTakenBreak": -1,
-                "dayOfWork": ""
-            };
-            let sameDayWorktimes = tempData[0].filter((tempWorktime: IWorkTimeProp) => {
-                // Check for similar worktimes to narrow down selection
-                if (worktime.userId === tempWorktime.userId && worktime.dayOfWork === tempWorktime.dayOfWork) {
-                    // console.log("Match worktime");
-                    return tempWorktime;
-                }
-            });
-            // Set new work time from a combination of other worktimes from the same day
-            // console.log("Setup new work time:");
-            sameDayWorktimes.map((sameDayWorkTime: IWorkTimeProp) => {
-                // console.log("New work time: ", newWorktime);
-                
-                // Check if new work time is empty
-                if (newWorktime.id === "" && newWorktime.userId === "" && newWorktime.clockInTime === ""
-                    && newWorktime.clockOutTime === "" && newWorktime.hasTakenBreak === -1 
-                    && newWorktime.dayOfWork === "") {
-                    newWorktime = sameDayWorkTime;
-                }
+        if (data[0].length <= 1) {
+            console.log("No worktimes to aggregate. Returning empty array from getAggregateWorktimes.");            
+            aggregatedWorktimes = data[0];
+            return aggregatedWorktimes;
+        } else {
+            console.log("Worktimes to aggregate: ", data[0]);
 
-                // Set any values that the other worktimes can fill in
-                if (newWorktime.clockInTime === "-1" && sameDayWorkTime.clockInTime !== "-1") {
-                    newWorktime.clockInTime = sameDayWorkTime.clockInTime;
-                }
-                if (newWorktime.clockOutTime === "-1" && sameDayWorkTime.clockOutTime !== "-1") {
-                    newWorktime.clockOutTime = sameDayWorkTime.clockOutTime;
-                }
-                if (newWorktime.hasTakenBreak === -1 && (sameDayWorkTime.hasTakenBreak === 0 || sameDayWorkTime.hasTakenBreak === 1)) {
-                    newWorktime.hasTakenBreak = sameDayWorkTime.hasTakenBreak;
-                } else if (newWorktime.hasTakenBreak !== -1 && (sameDayWorkTime.hasTakenBreak === 0 || sameDayWorkTime.hasTakenBreak === 1)
-                            && sameDayWorkTime.clockInTime === '-1' && sameDayWorkTime.clockOutTime === '-1') {
-                    // Check if there's a 'take break' entry. If so, that takes precedent over default value of false that other
-                    // entries have. 'Take break' work times have -1 set for their clock in/out times.
-                    newWorktime.hasTakenBreak = sameDayWorkTime.hasTakenBreak;
-                }
-                if (newWorktime.dayOfWork === "" && sameDayWorkTime.dayOfWork !== "") {
-                    newWorktime.dayOfWork = sameDayWorkTime.dayOfWork;
-                }
+            data[0].foreach((worktime: IWorkTimeProp) => {
+                // For each worktime, check for other worktimes on the same day. If there is any,
+                // then combine them if you can.
+                let newWorktime: IWorkTimeProp = {
+                    "id": "",
+                    "userId": "",
+                    "clockInTime": "",
+                    "clockOutTime": "",
+                    "hasTakenBreak": -1,
+                    "dayOfWork": ""
+                };
+                // eslint-disable-next-line array-callback-return
+                let sameDayWorktimes = tempData[0].filter((tempWorktime: IWorkTimeProp) => {
+                    // Check for similar worktimes to narrow down selection
+                    if (worktime.userId === tempWorktime.userId && worktime.dayOfWork === tempWorktime.dayOfWork) {
+                        // console.log("Match worktime");
+                        return tempWorktime;
+                    }
+                });
+                // Set new work time from a combination of other worktimes from the same day
+                // console.log("Setup new work time:");
+                sameDayWorktimes.forEach((sameDayWorkTime: IWorkTimeProp) => {
+                    // console.log("New work time: ", newWorktime);
+                    
+                    // Check if new work time is empty
+                    if (newWorktime.id === "" && newWorktime.userId === "" && newWorktime.clockInTime === ""
+                        && newWorktime.clockOutTime === "" && newWorktime.hasTakenBreak === -1 
+                        && newWorktime.dayOfWork === "") {
+                        newWorktime = sameDayWorkTime;
+                    }
 
-                // console.log("New work time after modification check: ", newWorktime);
-            });
+                    // Set any values that the other worktimes can fill in
+                    if (newWorktime.clockInTime === "-1" && sameDayWorkTime.clockInTime !== "-1") {
+                        newWorktime.clockInTime = sameDayWorkTime.clockInTime;
+                    }
+                    if (newWorktime.clockOutTime === "-1" && sameDayWorkTime.clockOutTime !== "-1") {
+                        newWorktime.clockOutTime = sameDayWorkTime.clockOutTime;
+                    }
+                    if (newWorktime.hasTakenBreak === -1 && (sameDayWorkTime.hasTakenBreak === 0 || sameDayWorkTime.hasTakenBreak === 1)) {
+                        newWorktime.hasTakenBreak = sameDayWorkTime.hasTakenBreak;
+                    } else if (newWorktime.hasTakenBreak !== -1 && (sameDayWorkTime.hasTakenBreak === 0 || sameDayWorkTime.hasTakenBreak === 1)
+                                && sameDayWorkTime.clockInTime === '-1' && sameDayWorkTime.clockOutTime === '-1') {
+                        // Check if there's a 'take break' entry. If so, that takes precedent over default value of false that other
+                        // entries have. 'Take break' work times have -1 set for their clock in/out times.
+                        newWorktime.hasTakenBreak = sameDayWorkTime.hasTakenBreak;
+                    }
+                    if (newWorktime.dayOfWork === "" && sameDayWorkTime.dayOfWork !== "") {
+                        newWorktime.dayOfWork = sameDayWorkTime.dayOfWork;
+                    }
 
-            if (sameDayWorktimes.length > 0) {
-                // newWorktime is setup since there were same day worktimes
-                if (aggregatedWorktimes.length > 0) {
-                    let isIn = false;
-                    aggregatedWorktimes.map((aWorktime: IWorkTimeProp) => {
-                        if (aWorktime.id === newWorktime.id) {
-                            isIn = true;
+                    // console.log("New work time after modification check: ", newWorktime);
+                });
+
+                if (sameDayWorktimes.length > 0) {
+                    // newWorktime is setup since there were same day worktimes
+                    if (aggregatedWorktimes.length > 0) {
+                        let isIn = false;
+                        aggregatedWorktimes.forEach((aWorktime: IWorkTimeProp) => {
+                            if (aWorktime.id === newWorktime.id) {
+                                isIn = true;
+                            }
+                        })
+                        if (!isIn) {
+                            aggregatedWorktimes.push(newWorktime);
                         }
-                    })
-                    if (!isIn) {
+                    } else {
                         aggregatedWorktimes.push(newWorktime);
                     }
                 } else {
-                    aggregatedWorktimes.push(newWorktime);
-                }
-            } else {
-                // No same day worktimes so newWorkTime is not setup
-                if (aggregatedWorktimes.length > 0) {
-                    let isIn = false;
-                    aggregatedWorktimes.map((aWorktime: IWorkTimeProp) => {
-                        if (aWorktime.id === worktime.id) {
-                            isIn = true;
+                    // No same day worktimes so newWorkTime is not setup
+                    if (aggregatedWorktimes.length > 0) {
+                        let isIn = false;
+                        aggregatedWorktimes.forEach((aWorktime: IWorkTimeProp) => {
+                            if (aWorktime.id === worktime.id) {
+                                isIn = true;
+                            }
+                        })
+                        if (!isIn) {
+                            aggregatedWorktimes.push(worktime);
                         }
-                    })
-                    if (!isIn) {
-                        aggregatedWorktimes.push(worktime);
+                    } else {
+                        aggregatedWorktimes.push(worktime)
                     }
-                } else {
-                    aggregatedWorktimes.push(worktime)
                 }
-            }
 
-            // console.log("Worktime: ", worktime);
-            // console.log("Same day worktimes: ", sameDayWorktimes);
-        });
+                // console.log("Worktime: ", worktime);
+                // console.log("Same day worktimes: ", sameDayWorktimes);
+            });
+        }
         // console.log('Aggregated worktimes: ', aggregatedWorktimes);
 
         return aggregatedWorktimes;

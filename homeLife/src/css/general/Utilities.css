@@ -1,0 +1,116 @@
+/* Notifications */
+.general-notification {
+    background-color: #1e2127;
+    border-radius: 0 0 0 15px;
+    border-left: 5px solid #14161a;
+    border-bottom: 5px solid #14161a;
+    /* border-right: 5px solid #14161a; */
+    padding: 5px 10px;
+}
+.general-notification .header {
+    font-size: 0.7em;
+    font-weight: bold;
+    /* color: #ffd400; */
+}
+.general-notification .header h3 {
+    padding-right: 25px
+}
+.general-notification .text {
+    font-size: 0.5em;
+    text-align: left;
+    white-space: pre-line;
+}
+
+/* Release counter */
+.release-container-wrapper {
+    display: flex;
+    height: 4vh;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    z-index: 98;
+    position: absolute;
+    left: 6vw;
+    font-size: 0.75em;
+    color: wheat;
+}
+.release-container-wrapper .release-container-input {
+    display: flex;
+    justify-content: start;
+}
+.release-container-wrapper .release-container-input p {
+    margin: 0;
+    width: max-content;
+    padding-right: 25px;
+}
+.release-container-wrapper .release-container-input .count-input {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+}
+.release-container-wrapper .counter {
+    display: flex;
+    width: 50%;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+    border-bottom: 1px solid wheat;
+    border-top: 1px solid wheat;
+}
+.release-container-wrapper .after-text p {
+    margin: 0;
+    width: max-content;
+    padding-left: 5px;
+}
+.release-container-wrapper .counter .counter-item-wrapper {
+    display: flex;
+    height: 24px;
+}
+.release-container-wrapper .counter .counter-item-wrapper .counter-item {
+    position: relative;
+    width: 24px;
+}
+.release-container-wrapper .counter .counter-item-wrapper .counter-item .count-number {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Securtity Clearance */
+.no-clearance-note {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.no-clearance-note .no-clearance-wrapper {
+    background-color: #1e2228;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    border-radius: 15px;
+    padding: 10px;
+}
+.no-clearance-wrapper img {
+    height: 50vh;
+    margin: 25px 0;
+    border-radius: 15px;
+}
+
+/* Media queries */
+@media (min-width: 1024px) {
+    .release-container-wrapper {
+        left: 8vw;
+        font-size: 0.5em;
+    }
+}
+@media (min-width: 1920px) {
+    .release-container-wrapper {
+        left: 6vw;
+        font-size: 0.75em;
+    }
+}

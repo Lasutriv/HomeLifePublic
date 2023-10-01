@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MyHomeLife App",
+  "name": "A central hub for all aspects of your home life",
   "icons": [
     {
       "src": "favicon.ico",

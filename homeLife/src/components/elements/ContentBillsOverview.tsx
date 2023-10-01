@@ -2,7 +2,6 @@
 // tannerf1101@yahoo.com
 // File for distinguishing between overview bills and upcoming.
 
-import _settings from "../../AppSettings";
 import { Bill } from "./Bill";
 
 // The overview bills show a general all bills with their data condensed
@@ -16,7 +15,7 @@ function ContentBillsOverview({isAPIDown, bills, deleteBill}) {
                 <>
                     {/* TODO: Add sorting and filtering */}
                     { bills.length > 0 ? (
-                        bills.map((bill) => (<Bill key={ bill.id } bill={ bill } onDelete={ deleteBill } isOverview={ true }/>))
+                        bills.map((bill: { id: any; title: string; description: string; dueDate: string; reminder: number; autopay: number; amount: number; }) => (<Bill key={ bill.id } bill={ bill } onDelete={ deleteBill } isOverview={ true }/>))
                     ) : (
                         <div>No bills available.</div>
                     )}

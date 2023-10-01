@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ExitButton } from "./Button";
 
 interface IWorkTimeProps {
     workTime: {id: string, clockInTime: string, clockOutTime: string, hasTakenBreak: number, dayOfWork: string},
@@ -25,11 +26,11 @@ export const WorkTime = ({ workTime, onDelete }: IWorkTimeProps) => {
         // let date = Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' })?.format(new Date(workTime.dayOfWork))?.split(", ")?.[0] ?? '';
         // setWorkTimeDateString(day.toString() + ' - ' + date.toString());
         setWorkTimeDateString(workTime.dayOfWork);
-    }, [])
+    }, [workTime.dayOfWork])
 
     return (
         <div className="content-worktime">
-            <i style={{ color: 'red', cursor: 'pointer' }} className="fa-solid fa-x fa-xs" onClick={ () => onDelete(workTime.dayOfWork) }></i>
+            <ExitButton handleCallback={onDelete} callbackParam={workTime.dayOfWork} />
             <h4>
                 {/* hasTakenBreak is stored as 0/1 */}
                 {/* <div className="dayofWork">Day of Work{ new Date(workTime.dayOfWork).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) }</div> */}
@@ -39,7 +40,7 @@ export const WorkTime = ({ workTime, onDelete }: IWorkTimeProps) => {
             <div className="worktime-data">
                 <div className="clockInTime">
                     Clock In:&nbsp;
-                    { (workTime.clockInTime == "-1") ? (
+                    { (workTime.clockInTime === "-1") ? (
                         workTime.clockInTime
                     ) : (
                         Intl.DateTimeFormat('en-US', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(workTime.clockInTime)).split(", ").pop()
@@ -47,7 +48,7 @@ export const WorkTime = ({ workTime, onDelete }: IWorkTimeProps) => {
                 </div>
                 <div className="clockOutTime">
                     Clock Out:&nbsp;
-                    { (workTime.clockOutTime == "-1") ? (
+                    { (workTime.clockOutTime === "-1") ? (
                         workTime.clockOutTime
                     ) : (
                         Intl.DateTimeFormat('en-US', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(workTime.clockOutTime)).split(", ").pop()

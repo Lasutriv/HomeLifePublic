@@ -1,0 +1,109 @@
+.app-content .user-dashboard-container {
+    /* padding: 0 1% 1% 1%; */
+}
+.app-content .user-dashboard-container, .user-dashboard-container .user-dashboard-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.app-content .user-dashboard-container > img {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.user-dashboard-container .user-dashboard-content {
+    overflow: auto;
+}
+.user-dashboard-container .user-dashboard-content .user-content .name {
+    font-size: 0.75em;
+}
+.app-content .general-dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+    padding: 0.5em;
+    overflow: auto;
+}
+
+.app-content .general-dashboard-container .column-content {
+    height: 75%;
+    overflow: auto;
+}
+
+.app-content .content-center-column {
+    background-color: var(--app-bg);
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px -5px black;
+    flex-basis: 100%;
+    margin: 0 1%;
+    padding: 0 10px 10px 10px;
+    height: 98%;
+}
+.app-content .content-center-column .column-content.display-list {
+
+}
+.app-content .content-center-column .column-content.display-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+}
+.app-content .content-center-column .column-content.display-grid .content-bill {
+    flex-basis: 48%;
+    height: min-content;
+}
+
+.app-content .content-left-column,
+.app-content .content-right-column {
+    background-color: var(--app-bg);
+    flex-basis: 100%;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
+    box-shadow: 0px 5px 15px -5px black;
+    padding: 0 10px 10px 10px;
+    height: 98%;
+}
+.app-content .user-dashboard-container .user-info {
+    width: 75%;
+    padding: 0px 10px 10px 0;
+    height: 15%;
+}
+.app-content .user-dashboard-container .user-info .user-content {
+    background-color: rgb(106 128 171);
+    border-bottom: 1px solid wheat;
+    border-right: 1px solid wheat;
+    border-radius: 0px 0px 5px 0px;
+    padding: 5px 5px 5px 0.5em;
+}
+.app-content .content-center-column, .app-content .content-left-column, .app-content .content-right-column {
+    /* margin: 0 0 1em 0; */
+}
+
+@media screen and (min-width: 768px) {
+    .app-content .user-dashboard-container .user-info {
+        width: 25%;
+        padding: 0px 10px 10px 0;
+        height: 15%;
+    }
+    .app-content .general-dashboard-container {
+        flex-wrap: unset;
+    }
+    .app-content .content-center-column {
+        flex-basis: 50%;
+    }
+    .app-content .content-left-column, .app-content .content-right-column {
+        flex-basis: 25%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    
+}
+
+/* iPad Pro 12.9 - horizontal */
+@media screen and (min-width: 2731px) {
+
+}

@@ -1,0 +1,400 @@
+/* .gardening-container {
+
+} */
+.gardening-container h3 {
+    color: wheat;
+    margin-bottom: 0;
+    /* border-bottom: 1px solid wheat; */
+}
+.gardening-container p {
+    line-height: 1em;
+    margin: 5px 0 0 0;
+}
+.gardening-container .gardening-zone h3 {
+    border-bottom: unset;
+    font-size: 0.5em;
+    padding: 5px 0 0 0;
+}
+.gardening-container .top-bar {
+    margin-bottom: 0;
+}
+.gardening-container .content-container .row {
+    height: 100%;
+}
+.gardening-container .by-month {
+    font-size: 0.5em;
+    border-left: 1px solid wheat;
+}
+.gardening-container .by-month h3 {
+    font-size: 2em;
+    margin-bottom: 0;
+    padding: 5px 0 0 0;
+}
+.gardening-container .by-month ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+.gardening-container .current-month {
+    height: 100%;
+    overflow: auto;
+    font-size: 0.5em;
+}
+.gardening-container .current-month h3 {
+    font-size: 2em;
+}
+.gardening-container .my-garden-container {
+    height: 100%;
+    width: 100%;
+}
+.gardening-container .my-garden-container .my-garden-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    height: 93%;
+    width: 100%;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid var(--app-bg);
+    height: 35%;
+    width: 23%;
+    padding: 5px;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid var(--app-bg);
+    height: 100%;
+    width: 90%;
+    overflow: auto;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card * {
+    flex-basis: 100%;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card > i.fa-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+}
+.modal-garden-container .garden-card-image-container {
+    position: absolute; 
+    height: 100%;
+    width: 100%;
+}
+.garden-card-title {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+}
+.garden-card-title .header-text-container {
+    position: relative;
+}
+.garden-card-title .header-text-container .header-left-line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-bottom: 1px solid wheat;
+    height: 1px;
+    width: 10%;
+}
+.garden-card-title .header-text-container h3 {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    border-left: 1px solid wheat;
+    border-right: 1px solid wheat;
+    border-bottom: 1px solid wheat;
+}
+.garden-card-title .header-text-container .header-right-line {
+    position: absolute;
+    right: 0;
+    top: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-bottom: 1px solid wheat;
+    height: 1px;
+    width: 10%;
+}
+.garden-card-image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card .garden-card-info {
+    padding: 5px;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card .garden-card-name {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card .garden-card-description {
+    font-size: 1rem;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card-wrapper .garden-side-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start; 
+    height: 100%;
+    width: 10%;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card-wrapper .garden-side-buttons .btn-main {
+    border: 0;
+    margin-bottom: 2px;
+    flex-basis: 100%;
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card:not(.selected) {
+    border: 1px solid var(--app-bg);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45);
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card:not(.selected):hover {
+    border: 1px solid yellow;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.25);
+}
+.gardening-container .my-garden-container .my-garden-content .garden-card.selected {
+    border: 1px solid yellow;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.5);
+}
+.gardening-container .fruit-grid, .gardening-container .vegetable-grid,
+.gardening-container .herb-grid {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10px;
+    
+}
+.fruit-grid .fruit-grid-item, .vegetable-grid .vegetable-grid-item,
+.herb-grid .herb-grid-item {
+    position: relative;
+    cursor: pointer;
+    border: 1px solid var(--app-bg);
+    height: 200px;
+    width: 200px;
+}
+.fruit-grid .fruit-grid-item:not(.selected), .vegetable-grid .vegetable-grid-item:not(.selected),
+.herb-grid .herb-grid-item:not(.selected) {
+    border: 1px solid var(--app-bg);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45);
+}
+.fruit-grid .fruit-grid-item:not(.selected):hover, .vegetable-grid .vegetable-grid-item:not(.selected):hover,
+.herb-grid .herb-grid-item:not(.selected):hover {
+    border: 1px solid yellow;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.25);
+}
+.fruit-grid .fruit-grid-item.selected, .vegetable-grid .vegetable-grid-item.selected,
+.herb-grid .herb-grid-item.selected {
+    border: 1px solid yellow;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.5);
+}
+.fruit-grid .fruit-grid-item > img, .vegetable-grid .vegetable-grid-item > img,
+.herb-grid .herb-grid-item > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.fruit-grid .fruit-grid-item > h3, .vegetable-grid .vegetable-grid-item > h3,
+.herb-grid .herb-grid-item > h3 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: var(--app-bg);
+    border-radius: 10px 10px 0 0;
+    padding: 2px 8px;
+    font-size: 1rem;
+    text-align: center;
+}
+/* Fruit content not selected */
+.fruit-grid .fruit-grid-item .item-content:not(.selected), .vegetable-grid .vegetable-grid-item .item-content:not(.selected) {
+    display: none;
+}
+.modal-garden-item {
+    position: absolute;
+    background-color: var(--app-bg);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    top: 120%;
+    left: 0%;
+    /* transform: translate(-50%, -50%); */
+    font-size: 1rem;
+    z-index: 1;
+    max-height: 300px;
+    width: 800px;
+    overflow: auto;
+}
+.modal-garden-item hr {
+    border-color: wheat;
+    margin: 5px 0;
+}
+.modal-garden-item .item-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: centers;
+}
+.modal-garden-item .item-header .title-with-tags {
+    display: flex;
+    align-items: center;
+}
+.modal-garden-item .item-header .title-with-tags .tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag {
+    border-radius: 30px;
+    color: wheat;
+    font-size: 0.75rem;
+    margin: 2px 5px;
+    padding: 2px 5px;
+}
+/* Use muted colors for tags */
+.modal-garden-item .item-header .title-with-tags .tags .tag.spread {
+    background-color: #ac0000;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.fruit {
+    background-color: #00b700;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.herbaceous {
+    background-color: #0000b4;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.tree {
+    background-color: #a200a2;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.ph {
+    background-color: #abab00;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.matures {
+    background-color: #00aba3;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.warm.season {
+    background-color: #ab5500;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.cool.season {
+    background-color: #5000ab;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.annual {
+    background-color: #ab0055;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.perennial {
+    background-color: #00ab55;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.harvest {
+    background-color: #ab006a;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.cold.stratification {
+    background-color: #ab00a8;
+}
+.modal-garden-item .item-header .title-with-tags .tags .tag.tropical {
+    background-color: #ab3300;
+}
+
+
+/* .modal-garden-item .item-content {
+    
+} */
+/* Fruit content selected */
+.modal-garden-item .item-content.selected {
+    display: flex;
+    flex-wrap: wrap;
+}
+.modal-garden-item .item-content.selected > * {
+    flex-basis: 100%;
+}
+
+/* Garden Canvas */
+.my-garden-layout-wrapper {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    font-family: 'SwankyMooMoo';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+.my-garden-layout {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+    justify-content: center;
+}
+.my-garden-layout .garden-canvas-text-input {
+    border-radius: 5px;
+    font-size: 0.7em;
+    height: min-content;
+    margin: 5px 0;
+    padding: 5px;
+}
+.garden-canvas-wrapper {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.garden-canvas-wrapper .main-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right: 5px;
+    width: 8vh;
+}
+.garden-canvas-wrapper .main-buttons > *{
+    width: 100%;
+}
+.my-garden-layout-buttons {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.my-garden-layout-buttons .main-buttons, .my-garden-layout-buttons .secondary-buttons {
+    display: flex;
+    justify-content: center;
+    margin-left: calc(8vh + 5px);
+}
+#garden-canvas {
+    background-color: wheat;
+    border: 1px solid var(--app-bg);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45);
+    /* style with modern feel */
+    
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .gardening-container .by-month ul {
+        font-size: 1rem;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .gardening-container .current-month .modal-container {
+        font-size: 2em;
+    }
+    .garden-card-title .header-text-container h3 {
+        font-size: 1em;
+    }
+    .gardening-container .current-month .my-garden-container {
+        font-size: 2em;
+    }
+    .gardening-container .current-month .my-garden-layout-wrapper {
+        font-size: 1em;
+    }
+}
+
+/* iPad Pro 12.9 - horizontal */
+@media screen and (min-width: 2731px) {
+
+}

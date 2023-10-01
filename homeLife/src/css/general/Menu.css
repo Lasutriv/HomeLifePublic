@@ -1,0 +1,59 @@
+.two-item-menu-line {
+    display: flex;
+}
+.menu-divider {
+    background-color: wheat;
+    height: 1px;
+    width: 100%;
+}
+
+.app-menu {
+    color: white;
+    height: 100vh;
+    width: 20rem;
+    background-color: rgb(82, 82, 82);
+    z-index: 100;
+
+    transform: translate(-20rem, 0);
+    will-change: transform, box-shadow, z-index;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.app-menu h2 {
+    flex-basis: 100%;
+    text-align: center;
+}
+.app-menu a {
+    
+}
+
+.app-version {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
+.menu-open {
+    /* animation: menuOutAnimation 1s ease-in 0s 1; name duration timing-function delay iteration-count */
+    animation: menuOutAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes menuOutAnimation {
+    0% {
+        transform: translate(-20rem, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}

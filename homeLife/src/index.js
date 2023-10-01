@@ -1,14 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import './css/index.css';
+import './css/general/Index.css';
+import { Provider } from 'react-redux';
+import { store } from './AppStore'
 import App from './App';
+// import reportWebVitals from "./reportWebVitals";
+// https://react-icons.github.io/react-icons
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
     </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
+// reportWebVitals();

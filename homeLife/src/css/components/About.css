@@ -1,0 +1,234 @@
+.about-splash-screen {
+    background-image: url("../../files/splashScreens/Splash-Screen-V2.png");
+    background-size: cover;
+}
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    position: relative;
+    color: var(--app-bg);
+    overflow: auto;
+}
+.about-container .about-header {
+    display: flex;
+    justify-content: center;
+    flex-basis: 100%;
+    height: 100%;
+    color: wheat;
+    position: relative;
+}
+.about-container .about-header .hero-image-container {
+    height: 100%;
+    width: 100%;
+}
+.about-container .about-header .hero-image-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.about-container .about-header .typewriter-container {
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 0 18px 0 var(--app-bg);
+    background-color: var(--app-bg);
+}
+.about-container .about-header .typewriter-container h3 {
+    margin: 0;
+}
+.about-container .about-header .splash-screen-text {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+}
+.about-container .about-header .splash-screen-text .top-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.about-container .about-header .splash-screen-text .top-section .bar-left,
+.about-container .about-header .splash-screen-text .top-section .bar-right {
+    background-color: wheat;
+    height: 1px;
+    width: calc(50% - 37px);
+}
+.about-container .about-header .splash-screen-text .top-section .logo-container {
+    height: 64px;
+    width: 64px;
+}
+.about-container .about-header .splash-screen-text .top-section .logo-container img {
+    width: 100%;
+}
+.about-container .about-left {
+    position: relative;
+    flex-basis: 50%;
+    height: 90%;
+    padding: 0 1em;
+}
+.about-container .about-center {
+    position: relative;
+    flex-basis: 0%;
+    /* padding: 1%; */
+    height: 90%;
+}
+/* .about-container .about-left .bottom-spread {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+} */
+.about-container .about-left .bottom-spread > h1 {
+    background-color: var(--app-bg);
+    border-radius: 54px;
+    color: wheat;
+    margin: 10px auto;
+    font-size: 1em;
+    padding: 5px 10px;
+}
+.about-container .about-left .bottom-spread .app-plans {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.about-container .about-right {
+    flex-basis: 50%;
+    height: 90%;
+    width: 50%;
+}
+.about-container .about-right .about-right-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+/* .about-container .about-right .about-right-content .social-icons {
+
+} */
+.about-container .about-right .about-right-content .social-icons a {
+    margin: 0 15px;
+    background-color: var(--app-bg);
+    color: wheat;
+    font-size: 1em;
+}
+.about-container .about-right .about-right-content .hero-image-container {
+    position: relative;
+    height: 26%;
+    width: 100%;
+}
+.about-container .about-right .about-right-content .hero-image-container img {
+    object-fit: cover;
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+}
+.about-container .about-right .about-right-content .hero-image-container .shadow {
+    position: absolute;
+    top: 0;
+    box-shadow: inset 0 0 18px 0 var(--app-bg) !important;
+    height: 100%;
+    width: 101%;
+    z-index: 50;
+    right: 0;
+}
+.about-container .about-left .buttons-and-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.about-container .about-left .btn-main {
+    padding: 5px 10px;
+    font-size: .5em;
+    /* border: unset;
+    background: hsla(10, 75%, 62%, 1);
+    background: linear-gradient(90deg, hsla(10, 75%, 62%, 1) 5%, hsla(350, 100%, 69%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(10, 75%, 62%, 1) 5%, hsla(350, 100%, 69%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(10, 75%, 62%, 1) 5%, hsla(350, 100%, 69%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E76F57", endColorstr="#FF607B", GradientType=1 ); */
+}
+
+.about-container .about-left .btn-main:hover {
+    /* background: hsla(10, 75%, 62%, 1);
+    background: linear-gradient(90deg, hsla(10, 75%, 62%, 1) 5%, hsla(350, 100%, 69%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(10, 75%, 62%, 1) 5%, hsla(350, 100%, 69%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(10, 75%, 62%, 1) 5%, hsla(350, 100%, 69%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E76F57", endColorstr="#FF607B", GradientType=1 );
+    opacity: 0.7; */
+}
+.about-container .about-left .buttons-and-links {
+    display: flex;
+    justify-content: center;
+}
+.about-container .about-left .buttons-and-links a {
+    font-size: .4em;
+}
+.about-container .about-left .about-left-content .app-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.about-container .about-left .about-left-content .app-features .feature {
+    font-size: 0.4em;
+    padding: 2px 5px;
+    margin: 3px;
+    border-radius: 10px;
+    background-color: #000;
+    color: var(--header-text);
+}
+
+/* Media query for tablet */
+@media screen and (min-width: 768px) {
+    .about-container .about-left {
+        padding: 0 2em;
+    }
+    .about-container .about-left .bottom-spread > h1 {
+        font-size: 1.7em;
+    }
+    .about-container .about-left .btn-main {
+        font-size: .6em;
+        margin-right: 25px;
+    }
+    .about-container .about-left .buttons-and-links {
+        justify-content: flex-start;
+    }
+    .about-container .about-left .buttons-and-links a {
+        font-size: .5em;
+    }
+    .about-container .about-left .about-left-content .app-features .feature {
+        font-size: 0.3em;
+        padding: 2px 5px;
+    }
+    .about-container .about-right .about-right-content .hero-image-container {
+        height: 50%;
+    }
+    .about-container .about-right .about-right-content .hero-image-container .shadow {
+        height: 100%;
+        box-shadow: inset 0 0 18px 30px var(--app-bg) !important;
+    }
+    .about-container .about-right .about-right-content .hero-image-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .about-container .about-left .bottom-spread > h1 {
+        font-size: 2.5em;
+    }
+    .about-container .about-left .about-left-content .app-features .feature {
+        font-size: .5em;
+        padding: 5px 5px;
+    }
+    .about-container .about-right .about-right-content .hero-image-container {
+        height: 80%;
+    }
+}
+/* iPad Pro 12.9 - horizontal */
+@media screen and (min-width: 2731px) {
+    .about-container .about-right .about-right-content .hero-image-container .shadow {
+        left: -2px;
+        width: 101%;
+    }
+}

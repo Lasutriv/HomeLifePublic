@@ -1,0 +1,225 @@
+.animals-container {
+    position: relative;
+}
+.animals-container .animal-header {
+
+}
+.animal-header .current-animals-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.animal-header .current-animals-container .animal-container-wrapper {
+    position: relative;
+}
+.animal-header .current-animals-container .animal-container-wrapper .options-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 19;
+}
+.animal-header .current-animals-container .animal-container-wrapper .options-menu .options-menu-content {
+    display: none;
+}
+.animal-header .current-animals-container .animal-container-wrapper .options-menu .options-menu-content.show {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 1.5em;
+    background-color: wheat;
+    color: black;
+    padding: 1em;
+    font-size: 0.5em;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+.animal-header .current-animals-container .animal-container-wrapper .options-menu .options-menu-content.show .option:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.animal-header .current-animals-container .animal-container-wrapper .options-menu > i {
+    font-size: 1.5em;
+    padding: 0 10px;
+}
+.animal-header .current-animals-container .animal-container {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    font-size: 0.75em;
+    background-color: var(--app-bg-highlight);
+    border-radius: 30px;
+    padding: 15px;
+    min-height: 200px;
+}
+.animal-header .current-animals-container .animal-container .animal-type {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+.animal-header .current-animals-container .animal-container .animal-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid wheat;
+}
+.animal-header .current-animals-container .animal-container .animal-info .animal-name-breed-sex {
+    flex-basis: 100%;
+    color: wheat;
+}
+.animal-header .current-animals-container .animal-container .animal-info .animal-age-weight {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+.animal-header .current-animals-container .animal-container .meters-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters-title {
+    flex-basis: 100%;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters {
+    width: 100%;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 10px 0;
+    height: 15px;
+    width: 100%;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-name {
+    width: 200px;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter > i {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -60%);
+    z-index: 1;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar {
+    background-color: #181b1f;
+    border-radius: 30px;
+    height: 100%;
+    width: 100%;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar .meter-fill {
+    border-radius: 30px;
+    height: 100%;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar .meter-fill.brown {
+    background-color: #38322c;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar .meter-fill.red {
+    background-color: #a74a43;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar .meter-fill.blue {
+    background-color: #516067;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar .meter-fill.white {
+    background-color: #d8cfc0;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar .meter-fill.yellow {
+    background-color: #c38d4f;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters .meter .meter-bar .meter-fill.other {
+    background-color: #6248d8;
+}
+.animal-header .current-animals-container .animal-container .meters-container .title,
+.animal-header .current-animals-container .animal-container .surgeries-container .title,
+.animal-header .current-animals-container .animal-container .prescriptions-container .title,
+.animal-header .current-animals-container .animal-container .vaccinations-container .title,
+.animal-header .current-animals-container .animal-container .notes-container .title {
+    color: wheat;
+    text-decoration: underline;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters-add {
+    margin-left: 5px;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters-add i {
+    font-size: 1em;
+    transition: all 0.5s ease-in-out;
+}
+.animal-header .current-animals-container .animal-container .meters-container .meters-add i:hover {
+    /* Rotate */
+    transform: rotate(360deg);
+}
+.animal-header .current-animals-container .animal-container .surgeries-container .surgeries,
+.animal-header .current-animals-container .animal-container .prescriptions-container .prescriptions,
+.animal-header .current-animals-container .animal-container .vaccinations-container .vaccinations {
+    display: flex;
+    margin-left: 5px;
+}
+.animal-header .current-animals-container .animal-container .surgeries-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+.animal-header .current-animals-container .animal-container .prescriptions-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+.animal-header .current-animals-container .animal-container .vaccinations-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+.animal-header .current-animals-container .animal-container .notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+.animal-header .current-animals-container .animal-container .notes-container .notes {
+    
+}
+.animal-header .current-animals-container .animal-container.selected {
+    border: 1px solid #d8ae48;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.5);
+}
+.animal-header .current-animals-container .animal-container:not(.selected) {
+    border: 1px solid var(--app-bg-highlight);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45);
+}
+.animal-header .current-animals-container .add-animal-container {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--app-bg-highlight);
+    border-radius: 30px;
+    padding: 0 10px;
+    min-height: 200px;
+}
+.animal-header .current-animals-container .add-animal-container > i {
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.animal-header .current-animals-container .add-animal-container > i:hover  {
+    transform: rotate(180deg);
+}
+.animal-info-open {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: min-content;
+    z-index: 9999999;
+}
+.animal-icon-info .content {
+    font-size: 0.6em;
+    padding: 1em;
+}
+
+/* highlight containers */
+.highlight-container {
+    
+}

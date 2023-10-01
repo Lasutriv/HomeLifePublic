@@ -1,85 +1,76 @@
 // Tanner Fry
 
-import React, { useContext, useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { GlobalContext } from './AppSettings';
+import { SubscriptionPlan } from './App';
+import { useAppSelector } from './AppHooks';
+import { APIGetGeoLocation, APIGetWeatherData } from './api/Common';
 
-interface IUserProps {
-    id,
-    email,
-    firstName,
-    lastName,
-    totalTasksCompleted
+export interface IUserProps {
+    id: number,
+    email: string,
+    firstName: string,
+    lastName: string
 }
 
-function Dashboard() {
-    // const { globalData, setGlobalData } = useContext(GlobalContext)
-    // const [ aGlobalData, aSetGlobalData ] = useState({});
-    const [globalData, setGlobalData] = useState({
-        user: {
-            id: "",
-            email: "",
-            firstName: "",
-            lastName: "",
-            totalTasksCompleted: "",
-        },
-        userPreferences: {
+export interface IUserSettings {
+    id: number,
+    userId: number,
+    hardinessZone: number,
+    location: string,
+    temperatureUnit: string,
+}
 
-        },
-        formStates: {
-            
-        }
-    })
-    
+interface IDashboardProps {
+    userPlan: SubscriptionPlan;
+}
 
-    // Set initial global data
+function Dashboard(props: IDashboardProps) {
+    const currentUser: IUserProps = JSON.parse(localStorage.getItem('user'));
+    const hardinessZone = useAppSelector(state => state.users.hardinessZone);
+    const location = useAppSelector(state => state.users.location);
+    const temperatureUnit = useAppSelector(state => state.users.temperatureUnit);
+    const [weatherData, setWeatherData] = useState<any>([]);
+
     useEffect(() => {
-        let currentUser: IUserProps = JSON.parse(localStorage.getItem('user'));
-        // console.log("A Global Data: ", JSON.stringify(aGlobalData));
-        setGlobalData({
-            user: {
-                id: currentUser.id,
-                email: currentUser.email,
-                firstName: currentUser.firstName,
-                lastName: currentUser.lastName,
-                // totalTasksCompleted: currentUser.totalTasksCompleted,
-                totalTasksCompleted: "",
-            },
-            userPreferences: {
-
-            },
-            formStates: {
-
-            }
+        APIGetGeoLocation(location.split(',')[0].trim()).then((data) => {
+            // console.log(data.response[0]);
+            APIGetWeatherData(data.response[0].lat, data.response[0].lon).then((data) => {
+                console.log("Setting weather data: ", data.response);
+                setWeatherData(data.response);                
+            });
         });
+    }, []);
 
-        // eslint-disable-next-line
-    }, [])
 
     return (
         <div className='user-dashboard-container'>
+            <img src={require('./files/splashScreens/Wheat-Background.png')} />
             <div className='user-dashboard-content'>
                 <div className='user-info'>
                     <div className='user-content'>
                         <div className='name'>
-                            {globalData.user.firstName} {globalData.user.lastName}
+                            {currentUser.firstName} {currentUser.lastName} - Plan: {props.userPlan}
                         </div>
                         <hr/>
-                        <div className='total-tasks-completed'>
-                            Total Tasks Completed: 
-                            {globalData.user.totalTasksCompleted != "" ? (
+                        <div className='user-content-item'>
+                            Hardiness Zone: {hardinessZone}
+                            {/* Total Tasks Completed:  */}
+                            {/* TODO: Pull from the statistics table */}
+                            {/* {globalData.user.totalTasksCompleted !== "" ? (
                                 globalData.user.totalTasksCompleted
                             ) : (
                                 <> 0</>
-                            )}
+                            )} */}
                         </div>
+                        <div className='user-content-item'>Location: {location}</div>
+                        <div className='user-content-item'>Current temp: {(temperatureUnit === 'F') ? weatherData?.current?.temp.toPrecision(2) : ((weatherData?.current?.temp - 32) * (5/9)).toPrecision(2)} °{temperatureUnit}</div>
                     </div>
                 </div>
-                <GlobalContext.Provider value={ {globalData, setGlobalData} }>
-                    <Outlet />
-                </GlobalContext.Provider>
+                <Outlet />
             </div>
         </div>
     );

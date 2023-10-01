@@ -1,19 +1,42 @@
 {
   "name": "home-life-api",
-  "version": "0.1.0",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -L api.js & nodemon -L src/index.js"
+    "start": "nodemon --watch src --ext ts --exec ts-node --ignore '*.test.ts' --delay 3 src/api.ts",
+    "dev": "nodemon --exitcrash",
+    "dev2": "nodemon -L ./src/api.tsx --exitcrash",
+    "dev3": "nodemon -L ./src/api.tsx & nodemon -L src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "express-validator": "^7.0.1",
+    "multer": "^1.4.5-lts.1",
     "mysql": ">=2.5.0",
-    "twilio": "^3.84.0"
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.5",
+    "stripe": "^13.2.0",
+    "twilio": "^4.15.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.3",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/multer": "^1.4.7",
+    "@types/mysql": "^2.15.21",
+    "@types/node": "^20.5.7",
+    "@types/node-fetch": "^2.6.4",
+    "@types/stripe": "^8.0.417",
+    "@types/twilio": "^3.19.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }

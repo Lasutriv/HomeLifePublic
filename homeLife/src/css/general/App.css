@@ -1,0 +1,134 @@
+/* Color palettes:
+#1 282C34 f5deb3 B19688 DA5274 1B375F
+#2 282C34 f5deb3 EF975B A5B4C5 434C41
+#3 282C34 f5deb3 EBA24F B46F2B 3F4829
+*/
+
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth; 
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--app-bg);
+}
+
+.app-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid wheat;
+    color: white;
+    font-size: calc(10px + 2vmin);
+    text-align: center;
+    height: 7%;
+}
+
+.app-header h1 {
+    font-size: .8em;
+    flex-basis: 100%;
+    margin: 0;
+}
+
+.app-header .menu-hamburger {
+    position: absolute;
+    left: 0;
+    margin-left: 0.5em;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+.app-header .app-time {
+    position: absolute;
+    right: 0;
+    font-size: 0.5em;
+    margin-right: 0.5em;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+.app-header .app-notice-banner {
+    font-size: 0.5em;
+    transition: all 0.5s ease;
+}
+
+.app-content {
+    display: flex;
+    color: white;
+    font-size: calc(10px + 2vmin);
+    flex: 1 0 auto;
+    height: 85%;
+}
+.app-content i {
+    color: wheat;
+    cursor: pointer;
+    font-size: 0.7em;
+}
+.app-content .privacy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 auto;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+.app-content .privacy-container .content-container{
+    width: 75%;
+}
+
+.app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: calc(8px + 2vmin);
+    flex-shrink: 0;
+    text-align: center;
+    height: 5%;
+    font-size: 1em;
+}
+.app-footer a {
+    padding: 0 7.5px;
+}
+
+a,
+.app-link {
+    color: #61dafb;
+}
+
+.user-info .user-content hr {
+    border-top: 1px solid slategray;
+    margin: -7px 0 7px 0;
+}
+
+.user-info .user-content .user-content-item {
+    font-size: 0.5em;
+}
+
+/* Scrollbar */
+body *::-webkit-scrollbar {
+    width: 0.5em;               /* width of the entire scrollbar */
+}
+
+body *::-webkit-scrollbar-track {
+    background: var(--app-bg);        /* color of the tracking area */
+}
+
+body *::-webkit-scrollbar-thumb {
+    background-color: wheat;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid var(--app-bg);  /* creates padding around scroll thumb */
+}
+
+@media (min-width: 768px) {
+    .app-header h1 {
+        font-size: 1em;
+    }
+}

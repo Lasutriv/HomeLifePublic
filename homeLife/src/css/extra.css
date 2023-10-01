@@ -10,6 +10,7 @@
     flex-basis: 100%;
     text-align: center;
     padding: 10px;
+    cursor: pointer;
 }
 
 .color-scheme-switches .swatches-picker {
@@ -19,3 +20,51 @@
 .swatches-picker {
 
 }
+
+.typewriter-container {
+    display: flex;
+    align-items: center;
+}
+
+.loading {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.loading .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loading .loading-text {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+.loading-spinner {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+.loading-spinner:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loading-spinner 1.2s linear infinite;
+}
+@keyframes loading-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  

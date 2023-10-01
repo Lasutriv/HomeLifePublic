@@ -1,0 +1,50 @@
+:root {
+    --app-bg: #1b1e23;
+    --app-bg-highlight: #282c34;
+    --link-text: #8ac8d9;
+    --header-text: #f5deb3;
+    --primary-decoration: #f5deb3;
+}
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Unbounded', 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root,
+.App {
+    height: 100%;
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--link-text) !important;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: 
+        local('Unbounded'), 
+        url(./../../fonts/Unbounded-VariableFont_wght.ttf)
+        /* url("./../fonts/Unbounded-VariableFont_wght.ttf") */
+        format('truetype');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+    font-family: 'SwankyMooMoo';
+    src: 
+        local('SwankyMooMoo'),
+        url(./../../fonts/SwankyandMooMoo-Regular.ttf)
+        format('truetype');
+}

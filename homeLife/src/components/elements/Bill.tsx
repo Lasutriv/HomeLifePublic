@@ -1,3 +1,4 @@
+import { ExitButton } from "./Button"
 
 export interface IBillComponentProps {
 	bill: {
@@ -28,7 +29,7 @@ export const Bill = ({ bill, onDelete, isOverview }: IBillComponentProps) => {
 		<>
 			{isOverview ? (
 				<div className="content-bill overview-bills">
-					<i style={{ color: 'red', cursor: 'pointer' }} className="fa-solid fa-x fa-xs" onClick={ () => onDelete(bill.id) }></i>
+					<ExitButton handleCallback={onDelete} callbackParam={bill.id} />
 					<h4>
 						<div className="title">{ bill.title }</div>
 						<div className="amount">Due: ${ bill.amount }</div>
@@ -56,7 +57,7 @@ export const Bill = ({ bill, onDelete, isOverview }: IBillComponentProps) => {
 				</div>
 			) : (
 				<div className="content-bill upcoming-bills">
-					<i style={{ color: 'red', cursor: 'pointer' }} className="fa-solid fa-x fa-xs" onClick={ () => onDelete(bill.id) }></i>
+					<ExitButton handleCallback={onDelete} callbackParam={bill.id} />
 					<h4 className="upcoming-bills">
 						<div className="bill-header-left">
 							<div className="title">{ bill.title }</div>

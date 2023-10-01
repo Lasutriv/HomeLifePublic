@@ -1,0 +1,18 @@
+.settings-container {
+    display: flex;
+}
+.settings-container .settings-menu {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 20%;
+}
+.settings-container .settings-menu > * {
+    flex-basis: 100%;
+}
+.settings-container .vertical-ruler {
+    width: 1px;
+    background-color: wheat;
+    margin: -20px 10px;
+}

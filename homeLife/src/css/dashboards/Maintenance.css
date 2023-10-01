@@ -1,0 +1,218 @@
+div.common-container.maintenance-container {
+    padding: 0 1% 1% 1%;
+}
+.maintenance-container .generic-search {
+    width: 100%;
+}
+.maintenance-container .header-with-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.maintenance-container .header-with-items.sticky {
+    position: sticky;
+    top: 0;
+    transition: 0.5s;
+    background-color: var(--app-bg-highlight);
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 0 0px 10px 10px;
+    z-index: 15;
+}
+.maintenance-container .grid-container-common-tasks {
+    display: grid;
+    background-color: var(--app-bg-highlight);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    position: relative;
+}
+.maintenance-container .grid-color-key-wrapper {
+    background-color: #1c2027;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    margin: 5px;
+} 
+.maintenance-container .grid-color-key-wrapper .grid-color-key-title {
+    padding-right: 10px;
+}
+.maintenance-container .grid-color-key-wrapper .grid-color-key-title h4 {
+    margin: 0;
+}
+.maintenance-container .grid-color-key {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 50%;
+}
+.maintenance-container .grid-color-key .grid-color-key-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.maintenance-container .grid-color-key .grid-color-key-item p {
+    margin: 0 5px 0 0;
+    padding: 0;
+    font-size: 0.6em;
+}
+.maintenance-container .grid-color-key .grid-color-key-item .grid-color-key-item-color {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.maintenance-container .grid-color-key .grid-color-key-item .grid-color-key-item-color.overdue {
+    background-color: #680000;
+}
+.maintenance-container .grid-color-key .grid-color-key-item .grid-color-key-item-color.due {
+    background-color: #9f3a00;
+}
+.maintenance-container .grid-color-key .grid-color-key-item .grid-color-key-item-color.pending {
+    background-color: #9f7f00;
+}
+.maintenance-container .grid-color-key .grid-color-key-item .grid-color-key-item-color.completed {
+    background-color: #009b00;
+}
+.maintenance-container .grid-color-key .grid-color-key-item .grid-color-key-item-color.failed {
+    background-color: #a60000;
+}
+.maintenance-container .grid-container-common-tasks .grid-item {
+    background-color: #8f8f8f;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+.maintenance-container .grid-container-common-tasks .grid-item {
+    margin: 5px;
+    padding: 5px;
+}
+.maintenance-container .grid-container-common-tasks .grid-item h4 {
+    font-size: 0.75em;
+    margin: 0;
+}
+.maintenance-container .grid-container-common-tasks .grid-item h1, .maintenance-container .grid-container-common-tasks .grid-item h2,
+.maintenance-container .grid-container-common-tasks .grid-item h3, .maintenance-container .grid-container-common-tasks .grid-item h4,
+.maintenance-container .grid-container-common-tasks .grid-item h5 {
+    color: white;
+}
+.maintenance-container .grid-container-common-tasks .grid-item.pending {
+    background-color: #9f7f00;
+    border: 1px solid #9f7f00;
+}
+.maintenance-container .grid-container-common-tasks .grid-item.failed {
+    background-color: #a60000;
+    border: 1px solid #a60000;
+}
+.maintenance-container .grid-container-common-tasks .grid-item.completed {
+    background-color: #009b00;
+    border: 1px solid #009b00;
+}
+.maintenance-container .grid-container-common-tasks .grid-item.overdue {
+    background-color: #680000;
+    border: 1px solid #680000;
+}
+.maintenance-container .grid-container-common-tasks .grid-item.due {
+    background-color: #9f3a00;
+    border: 1px solid #9f3a00;
+}
+.maintenance-container .grid-container-common-tasks .grid-item.pending:hover,
+.maintenance-container .grid-container-common-tasks .grid-item.failed:hover,
+.maintenance-container .grid-container-common-tasks .grid-item.completed:hover,
+.maintenance-container .grid-container-common-tasks .grid-item.overdue:hover,
+.maintenance-container .grid-container-common-tasks .grid-item.due:hover {
+    /* border: 1px solid white;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.25); */
+    border: 1px solid yellow;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.25);
+}
+.maintenance-container .maintenance-container-items {
+    display: grid;
+    grid-template-columns: minmax(49%, auto) minmax(49%, auto);
+    grid-gap: 10px;
+}
+.maintenance-container .maintenance-container-items .maintenance-item {
+    position: relative;
+    /* background-color: #313b59; */
+    background-color: var(--app-bg-highlight);
+    height: 38vh;
+    border-radius: 30px;
+    padding: 1em;
+}
+.maintenance-container .maintenance-container-items .maintenance-item .btn-exit {
+    top: 25px;
+    right: 25px;
+}
+.maintenance-container .maintenance-container-items .maintenance-item .header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 0.7em;
+}
+.maintenance-container .maintenance-container-items .maintenance-item .header .side-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 30px;
+}
+.maintenance-container .maintenance-container-items .maintenance-item .header .side-right p {
+    padding: 0;
+    margin: 0;
+}
+.maintenance-container .maintenance-container-items .maintenance-item .dueDate,
+.maintenance-container .maintenance-container-items .maintenance-item .reoccuringDue {
+    font-size: 0.85em;
+}
+.maintenance-container .maintenance-container-items .maintenance-item .taskDescription {
+    font-size: 0.5em;
+    margin: 1em 0 1em 0;
+}
+.maintenance-container .maintenance-container-items .maintenance-item .taskName {
+    font-size: 1em;
+    max-width: 80%;
+}
+
+@media screen and (min-width: 768px) {
+    .maintenance-container .generic-search {
+        width: 70vh;
+    }
+    .maintenance-container .grid-color-key {
+        width: unset;
+    }
+    .maintenance-container .grid-container-common-tasks {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .maintenance-container .grid-container-common-tasks .grid-item h4 {
+        font-size: 1.25em;
+    }
+    .maintenance-container .maintenance-container-items {
+        grid-template-columns: minmax(32%, auto) minmax(32%, auto) minmax(32%, auto);
+    }
+    .maintenance-container .maintenance-container-items .maintenance-item {
+        border-radius: 50px;
+        padding: 4%s;
+    }
+    .maintenance-container .maintenance-container-items .maintenance-item .header {
+        flex-wrap: unset;
+    }
+    .maintenance-container .maintenance-container-items .maintenance-item .taskDescription {
+        font-size: 0.75em;
+    }
+    .maintenance-container .maintenance-container-items .maintenance-item .taskName {
+        font-size: 1.25em;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+}
+
+/* iPad Pro 12.9 - horizontal */
+@media screen and (min-width: 2731px) {
+
+}

@@ -1,3 +1,4 @@
+import { ExitButton } from "./Button"
 
 interface ITaskProps {
   task: {id: string, title: string, description: string, dueDate: string, reminder: number},
@@ -7,7 +8,7 @@ interface ITaskProps {
 export const Task = ({ task, onDelete }: ITaskProps) => {
 	return (
 		<div className="content-task">
-			<i style={{ color: 'red', cursor: 'pointer' }} className="fa-solid fa-x fa-xs" onClick={ () => onDelete(task.id) }></i>
+			<ExitButton handleCallback={onDelete} callbackParam={task.id} />
 			<h4>
 				{/* Reminder is stored as 0/1 - true/false */}
 				<div className="title">{ task.title }</div>

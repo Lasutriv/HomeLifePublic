@@ -5,6 +5,7 @@ import { getCorrectDomain } from '../../AppSettings';
 export const MenuAppColorPickers = ({ menuThemeColor, setMenuThemeColor }) => {
     const [areSketchPickersEnabled, setAreSketchPickersEnabled] = useState(false);
 	// const rgbColor: RGBColor = {r: 82, g: 82, b: 82, a: 1};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const rgbColor: RGBColor = {r: menuThemeColor[0], g: menuThemeColor[1], b: menuThemeColor[2], a: menuThemeColor[3]};
 	const [sketchPickerColor, setSketchPickerColor] = useState(rgbColor);
     const [sketchHexColor, setSketchHexColor] = useState('#525252');

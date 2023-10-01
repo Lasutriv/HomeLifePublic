@@ -32,7 +32,8 @@ EXPOSE 7778
 
 # Allows us to specify commands to use at runtime when a container is ran. Below we spin up our app in the container
 # when the container is ran
-CMD ["npm", "run", "dev"]  
+CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev2"]
 # NOTE: Above command runs the dev script in package.json file. The dev script is 'nodemon -L app.js'. Another note,
 #       the '-L' flag is needed for windows only.
 
@@ -79,3 +80,11 @@ CMD ["npm", "run", "dev"]
 # Volumes allow us to specify folders on our host computer that can be made available to running containers. We can
 # map those folders on our host computer to specific folders in the container so that if something changed in those
 # folders on our host computer, then the changes would be reflected on the container.
+
+# Running multiple commands on windows for ease of docker management creation/deletion
+# docker stop homeLife_api_c && docker rm homeLife_api_c && docker rmi homelife_api && docker-compose up
+# docker stop homeLife_api_c; docker rm homeLife_api_c; docker rmi homelife_api; docker-compose up
+
+# View docker logs
+# docker logs <container name/id>
+# docker logs --follow homeLife_api_c --tail 100  - Follows logs and shows last 100 lines

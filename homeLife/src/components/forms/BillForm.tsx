@@ -2,10 +2,9 @@
 // dev.lasutriv@gmail.com
 // Component used for creating a trask for the task tracker.
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ErrorMessage, Form, Field, Formik } from 'formik';
-import { CustomDatePickerField, CustomTimePickerField, CustomSelectField } from '../inputs/CommonInputs.js';
-import _settings from '../../AppSettings';
+import { CustomDatePickerField, CustomTimePickerField, CustomSelectField } from '../inputs/CommonInputs';
 import { APIGetUsers, APIPostNewBill, APIPostNewSharedBill, IUserFromUsersList } from '../../api/Common';
 
 interface IFormBillErrorProps {
@@ -19,7 +18,7 @@ interface IFormBillErrorProps {
 function BillForm({isBillSubmitModal, isModelShowing}) {
     const [isSharingBill, setIsSharingBill] = useState(false);
     const [reminderCount, setReminderCount] = useState(0);
-    const [optionsUsers, setOptionsUsers] = useState([]);
+    const [optionsUsers, setOptionsUsers] = useState<IUserFromUsersList[]>([]);
     let optionsReminder = [{value: 0, label: 0}, {value: 1, label: 1}, {value: 2, label: 2}, {value: 3, label: 3}];
     
     useEffect(() => {
@@ -31,7 +30,7 @@ function BillForm({isBillSubmitModal, isModelShowing}) {
     useEffect(() => {
         console.log('Options - Users - Has Changed: ', optionsUsers);
         
-    }, optionsUsers)
+    }, [optionsUsers])
 
     async function submitForm(values, setSubmitting) {
         console.log('Submitting bill entry: ', values);
@@ -44,12 +43,12 @@ function BillForm({isBillSubmitModal, isModelShowing}) {
         console.log('New bill data: ', newBillData);
 
         // TOOD: Submit isbillshared record so the other user can see the bill
-        console.log('Share bill submit value: ', (values.shareBill == "false"));
+        console.log('Share bill submit value: ', (values.shareBill === "false"));
         
-        if ((values.shareBill == "false") == true) {
+        if ((values.shareBill === "false") === true) {
             APIPostNewSharedBill({
                 billId: newBillData[0].insertedData.id,
-                shareBill: (values.shareBill == "false"),
+                shareBill: (values.shareBill === "false"),
                 userIdA: JSON.parse(localStorage.getItem('user')).id,
                 userIdB: values.shareWithUser.value
             })
@@ -95,7 +94,7 @@ function BillForm({isBillSubmitModal, isModelShowing}) {
         console.log(userData);
         
         // Map user data to a new options list
-        userData.users.map((user: IUserFromUsersList) => {
+        userData.users.forEach((user: IUserFromUsersList) => {
             // Don't allow the user to share with themselves
             if (user.id !== JSON.parse(localStorage.getItem('user')).id) {
                 userList.push({value: user.id, label: user.firstName + ' ' + user.lastName});
@@ -159,7 +158,7 @@ function BillForm({isBillSubmitModal, isModelShowing}) {
                             </div>
                             <div className='field-group'>
                                 <div className='form-field-title'>Description<div className='required-asterisk'>*</div></div>
-                                <Field name='description' as='textarea' />
+                                <Field name='description' as='textarea' rows='4'/>
                                 <ErrorMessage name='description' component='div' className='form-error' />
                             </div>
                             <div className='field-group'>

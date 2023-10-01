@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Button, ListOrGrid, TabButton} from "./Button";
 import ContentBillsUpcoming from "./ContentBillsUpcoming";
 import ContentBillsOverview from "./ContentBillsOverview";
 import { TruncateDecimals } from "../Common";
-import moment from "moment";
 import { IBillProps } from "./Bill";
 import { APIGetBills, APIGetBillsByUser, APIGetSharedBills, ISharedBillProps } from "../../api/Common";
 import { getCorrectDomain, _settings } from "../../AppSettings";
 
 function ContainerContentCenter({clickFunc}) {
     const [bills, setBills] = useState([]);
-    const [currentDate, setDate] = useState(`${moment().format("MMM do, YYYY")}`);
+    // const [currentDate, setDate] = useState(`${moment().format("MMM do, YYYY")}`);
     const [isAPIDown, setIsAPIDown] = useState(true);
     const [currentView, setCurrentView] = useState('List');
     const [isShowingUpcomingBills, setIsShowingUpcomingBills] = useState(true);
@@ -24,7 +22,7 @@ function ContainerContentCenter({clickFunc}) {
     useEffect(() => {
         let totalAmount = 0.0;
         
-        bills.map((bill: IBillProps) => {
+        bills.forEach((bill: IBillProps) => {
             totalAmount += bill.amount;
         });
 
@@ -43,7 +41,7 @@ function ContainerContentCenter({clickFunc}) {
 
             // Get users bills amount
             let usersAmount = 0.0;
-            currentUserBills.map((bill: IBillProps) => {
+            currentUserBills?.forEach((bill: IBillProps) => {
                 usersAmount += bill.amount;
             })
             setUserBillsAmount(usersAmount);
@@ -51,7 +49,7 @@ function ContainerContentCenter({clickFunc}) {
             if (sharedBills.length > 0) {
                 // Check for any bills that are shared with the current user
                 const sharedBillsWithCurrentUser = [];
-                sharedBills.map((sharedBill: ISharedBillProps) => {
+                sharedBills.forEach((sharedBill: ISharedBillProps) => {
                     if (sharedBill.userIdB === currentUserId) {
                         sharedBillsWithCurrentUser.push(sharedBill);
                     }
@@ -59,8 +57,8 @@ function ContainerContentCenter({clickFunc}) {
                 // Get exact bill data for all shared bills with current user and add to a list for later aggregation
                 // with current user's bills
                 let sharedAmount = 0.0;
-                allBills.map((bill: IBillProps) => {
-                    sharedBillsWithCurrentUser.map((sharedBill: ISharedBillProps) => {
+                allBills.forEach((bill: IBillProps) => {
+                    sharedBillsWithCurrentUser.forEach((sharedBill: ISharedBillProps) => {
                         if (bill.id === sharedBill.billId) {
                             sharedAmount += bill.amount
                             allDataForSharedBillsWithCurrentUser.push(bill);
@@ -71,7 +69,7 @@ function ContainerContentCenter({clickFunc}) {
             }
 
             let allCurrentUserBills = [...currentUserBills];
-            allDataForSharedBillsWithCurrentUser.map((sharedBillWithCurrentUser: ISharedBillProps) => {
+            allDataForSharedBillsWithCurrentUser.forEach((sharedBillWithCurrentUser: ISharedBillProps) => {
                 allCurrentUserBills.push(sharedBillWithCurrentUser);
             })
 
@@ -79,7 +77,7 @@ function ContainerContentCenter({clickFunc}) {
 
             // Get total for all bills
             let totalAmount = 0.0;
-            allCurrentUserBills.map((bill: IBillProps) => {
+            allCurrentUserBills.forEach((bill: IBillProps) => {
                 totalAmount += bill.amount;
             })
             setTotalBillsAmount(totalAmount);
@@ -161,7 +159,7 @@ function ContainerContentCenter({clickFunc}) {
 
     return (
         <>
-            <div className="top-bar">
+            <div className="top-bar-main-dash">
                 <div className="bill-options">
                     <TabButton classes={isShowingUpcomingBills ? ('selected') : ('')} text="Upcoming Bills" onClick={handleSelectUpcomingBills}/>
                     <TabButton classes={!isShowingUpcomingBills ? ('selected') : ('')} text="Overview" onClick={handleSelectOverviewBills}/>

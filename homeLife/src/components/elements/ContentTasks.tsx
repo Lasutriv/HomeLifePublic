@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import moment from "moment";
 import { Task } from "./Task";
 import { getCorrectDomain, _settings } from "../../AppSettings";
 
@@ -13,15 +12,15 @@ interface ITaskProps {
     dueTime: string
 }
 
-function ContentTasks(props) {
+function ContentTasks({isReload, setIsReload}) {
     const [tasks, setTasks] = useState([]);
-    const [currentDate, setDate] = useState(`${moment().format("MMM do, YYYY")}`);
+    // const [currentDate, setDate] = useState(`${moment().format("MMM do, YYYY")}`);
     const [isAPIDown, setIsAPIDown] = useState(true);
 
     useEffect(() => {
         if (_settings.IS_CONSTANT_LOADING_ENABLED) {
             const interval = setInterval(() => {
-                // Refetch data every second
+                // Refetch data every 2 second
                 fetch(getCorrectDomain() + '/api/tasks', {
                     method: 'POST',
                     headers: {
@@ -48,6 +47,7 @@ function ContentTasks(props) {
                     }
                 });
             }, 2000);
+
             return () => {
                 clearInterval(interval);
             };
@@ -109,6 +109,7 @@ function ContentTasks(props) {
                 console.log("Fetched task data: " + JSON.stringify(data));
                 setTasks(data[0]);
                 setIsAPIDown(false);
+                setIsReload(false);
             }).catch(function (error) {
                 console.log("API Tasks fetch error: '" + JSON.stringify(error) + "'.");
                 console.log("Is return equal to 'TypeError: Failed to fetch': " + (error === "TypeError: Failed to fetch"));
@@ -119,7 +120,7 @@ function ContentTasks(props) {
         } catch (error) {
             // console.log("API Tasks fetch error: " + error);
         }
-	}, [])
+	}, [isReload])
 
     return (
         <>
