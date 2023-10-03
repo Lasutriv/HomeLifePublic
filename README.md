@@ -6,7 +6,7 @@ A dockerized system containing the front-end, backend, and SSL cert engine utili
 
 # The Goal
 
-Integrate all personal projects and home automation into 1 app that is responsive to all devices that connect to the app on the local network.
+Streamline the home life of individuals through various dashboards with the ability to integrate personal projects and home automation into 1 app that is responsive on all devices.
 
 # The Stack
 
@@ -19,7 +19,6 @@ Integrate all personal projects and home automation into 1 app that is responsiv
 
 ## Software to integrate
 
-- [Open World Weather](https://github.com/Lasutriv/Open-World-Weather)
 - [AIA](https://digimasteredworks.com/our-games/aia)
 - [Personal OpenAI Integration](https://github.com/Lasutriv/personal-openai-integration) - This will be enhanced when integrated to provide more buttons and options
 - Atlas - A project on the books but never started. It's basically a local internet library. Now that ChatGPT is here and long memory is close, local LLM integration will provide a fantastic use case for the app.
@@ -44,7 +43,7 @@ Integrate all personal projects and home automation into 1 app that is responsiv
   - Maintenance - Track home maintenance needs
   - News - View latest world news
   - Notes - Create moveable sticky notes in order to organize how you'd like
-  - Weather - View latest weather data for your area or engage with our custom built radar map
+  - Weather ([Open Weather Map](https://openweathermap.org/) integration) - View latest weather data for your area or engage with our custom built radar map
 - User settings
 
 # Notes
