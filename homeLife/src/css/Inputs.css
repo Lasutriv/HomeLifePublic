@@ -1,0 +1,8 @@
+/* A generic search bar */
+.generic-search, .search-bar {
+    background-color: var(--app-bg);
+    margin: 0.5rem 0;
+    border: 1px solid var(--app-bg-highlight);
+    border-radius: 10px;
+    color: white;
+}

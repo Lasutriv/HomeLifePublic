@@ -1,0 +1,47 @@
+.news-container {
+
+}
+.news-container .news-content {
+    height: 100%;
+    overflow: auto;
+}
+.news-container .news-content h1 {
+    text-align: center;
+}
+.news-container .news-content .news-item {
+    margin: 5vh auto;
+    width: 95%;
+}
+.news-container .news-content .news-item .news-description {
+    font-size: 0.7em;
+}
+
+.news-container .news-content .news-item .news-content {
+    font-size: 0.7em;
+} 
+.news-container .news-content .news-item .news-headers {
+    display: flex;
+    flex-wrap: wrap;
+}
+.news-container .news-content .news-item .news-headers .tag {
+    font-size: 0.5em;
+    background-color: brown;
+    border-radius: 15px;
+    padding: 2px 5px;
+    margin: 2px 4px 2px 0;
+}
+
+@media screen and (min-width: 768px) {
+    .news-container .news-content .news-item {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+}
+
+/* iPad Pro 12.9 - horizontal */
+@media screen and (min-width: 2731px) {
+
+}

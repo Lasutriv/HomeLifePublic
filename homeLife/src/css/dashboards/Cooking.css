@@ -1,0 +1,210 @@
+.cooking-container .cooking-tabs {
+    border-bottom: 1px solid wheat;
+}
+.cooking-container .highlight-header, .cooking-container .favorites-header {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    height: 30%;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.cooking-container .highlight-header h1, .cooking-container .favorites-header h1 {
+    flex-basis: 100%;
+    position: sticky;
+    top: 0;
+    background-color: var(--app-bg-highlight);
+    border-radius: 11px 11px 0 0;
+    font-size: 1em;
+    padding: 10px;
+}
+.cooking-container .highlight-header .highlight-items, .cooking-container .favorites-header .favorites-items {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+.cooking-container .highlight-header .highlight-items .highlight-item, .cooking-container .favorites-header .favorites-items .favorite-item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 0 10px;
+    border-left: 1px solid wheat;
+    border-right: 1px solid wheat;
+    border-bottom: 1px solid wheat;
+    border-radius: 0 0 10px 10px;
+    background-color: var(--app-bg-highlight);
+    color: wheat;
+    font-size: 0.5em;
+}
+.cooking-container .favorites-header .favorites-items .favorite-item .favorite-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    line-height: 1em;
+}
+.cooking-container .highlight-header .highlight-item h2, .cooking-container .favorites-header .favorite-item h2 {
+    font-size: 1em;
+}
+.cooking-container .highlight-header .highlight-item h3, .cooking-container .favorites-header .favorite-item h3 {
+    font-size: 0.75em;
+}
+.cooking-container .highlight-header .highlight-item p, .cooking-container .favorites-header .favorite-item p {
+    font-size: 0.7em;
+}
+.cooking-container .recipe-scroller {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 80%;
+    padding: 20px 10px;
+    margin: 0 auto;
+}
+.cooking-container .recipe-scroller .scroller-container {
+    height: 100%;
+    width: 70%;
+    overflow: auto;
+    padding: 0 10px;
+}
+.cooking-container .recipe-scroller .info-container {
+    padding: 0 20px;
+    height: 100%;
+    width: 30%;
+    overflow: auto;
+}
+.cooking-container .recipe-scroller .info-container .mods ul,
+.cooking-container .recipe-scroller .info-container .resources ul {
+    font-size: 0.5em;
+}
+.cooking-container .recipe-scroller .scroller-container h1 {
+    position: sticky;
+    top: 0;
+    background-color: var(--app-bg-highlight);
+    border-radius: 11px 11px 0 0;
+    width: 100%;
+    padding: 5px 10px;
+    z-index: 1;
+}
+.cooking-container .recipe-scroller .scroller-container .scroller {
+    padding: 0 10px;
+}
+.cooking-container .recipe-scroller .scroller-container .scroller .recipe-item {
+    position: relative;
+    border: 1px solid wheat;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.cooking-container .recipe-scroller .scroller-container .scroller .recipe-item .favorite-button {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    line-height: 1em;
+}
+.cooking-container .recipe-scroller .scroller-container .scroller .recipe-item h3 {
+    font-size: 0.5em
+}
+.cooking-container .recipe-scroller .scroller-container .scroller .recipe-item .recipe-description {
+    font-size: 0.75em;
+}
+
+
+/* New recipe styling */
+.cooking-container .recipe-scroller .info-container .new-recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+.cooking-container .recipe-scroller .info-container .new-recipe-container h3 {
+    flex-basis: 100%;
+}
+.cooking-container .recipe-scroller .info-container .new-recipe-container .plus-container {
+    display: flex;
+    flex-basis: 100%;
+    background-color: var(--app-bg-highlight);
+    border-radius: 15px;
+    justify-content: center;
+    padding: 5px;
+}
+.cooking-container .recipe-scroller .info-container .new-recipe-container .plus-container .plus-button {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: black;
+    border: 0;
+    border-radius: 15px;
+    width: 100px;
+}
+.cooking-container .recipe-scroller .info-container .new-recipe-container .user-info {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 5px;
+    border-bottom: 1px solid var(--app-bg-highlight);
+    border-left: 1px solid var(--app-bg-highlight);
+    border-right: 1px solid var(--app-bg-highlight);
+    border-radius: 0 0 15px 15px;
+}
+.cooking-container .recipe-scroller .info-container .new-recipe-container .user-info > * {
+    flex-basis: 100%;
+}
+
+/* Accordion */
+
+.fa-chevron-down {
+    margin-left: auto;
+    transition: transform 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.szh-accordion {
+    border-bottom: 1px solid #ccc;
+}
+.szh-accordion__item {
+    border-top: 1px solid #ccc;
+}
+.szh-accordion__item-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    color: var(--link-text);
+    background-color: transparent;
+    border: none;
+}
+.szh-accordion__item-btn:hover {
+    background-color: var(--app-bg-highlight);
+}
+.szh-accordion__item-content {
+    transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+    font-size: 0.5em;
+}
+.szh-accordion__item--expanded .szh-accordion__item-btn {
+    background-color: var(--app-bg-highlight);
+}
+.szh-accordion__item--expanded .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Pantry container */
+.common-container.pantry-container {
+    padding: unset;
+}
+.common-container.pantry-container .header-intro {
+    height: 100%;
+    width: 100%;
+}
+.common-container.pantry-container .header-intro > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

@@ -1,0 +1,10 @@
+// tsconfig.json
+{
+    "compilerOptions": {
+      "jsx": "react-jsx",
+      "allowJs": false,
+      "checkJs": false,
+      "allowSyntheticDefaultImports": true,
+      "lib": ["DOM", "ES2021.String"]
+    }
+}

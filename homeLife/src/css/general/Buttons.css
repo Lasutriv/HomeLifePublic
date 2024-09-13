@@ -1,0 +1,146 @@
+.btn-main {
+    background-color: #f5deb3;
+    color: var(--app-bg);
+    border: 1px solid var(--app-bg);
+    border-radius: 5px;
+    font-size: 0.7em;
+    height: min-content;
+    margin: 5px 2px;
+    padding: 5px;
+}
+.btn-main:hover {
+    background-color: #cfba94;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+.btn-main:active {
+    background-color: #9a8a6c;
+    border: 1px solid #000;
+}
+.btn-main i {
+    color: var(--app-bg);
+}
+.btn-main.selected {
+    border: 1px solid #fff;
+}
+.btn-main.min-size.min-style.borders-right {
+    border-radius: 0 5px 5px 0;
+    padding: 0 2px;
+    margin: 0;
+}
+.btn-main.app-header-back-button {
+    font-size: 0.5em;
+    padding: 0 5px;
+}
+.modal-container-tooltip .btn-main {
+    border-radius: 0 0 15px 15px;
+    font-size: 1em;
+    margin: 0;
+    width: 100%;
+}
+.btn-back {
+    background-color: #f5deb3;
+    color: var(--app-bg);
+    border: 1px solid var(--app-bg);
+    border-radius: 5px;
+    font-size: 0.7em;
+    height: min-content;
+    margin: 5px 2px;
+    padding: 5px;
+}
+.menu-hamburger:hover {
+    cursor: pointer;
+}
+.btn-menu {
+    background-color: rgb(82, 82, 82);
+    border: 0;
+    color: wheat;
+    text-decoration: unset;
+    height: min-content;
+    padding: 5px;
+    flex-basis: 100%;
+}
+.btn-menu:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.btn-menu:active {
+    text-decoration: underline;
+}
+
+.btn-tab {
+    background-color: var(--app-bg);
+    border: 0;
+    border-radius: 5px 5px 0 0;
+    color: wheat;
+    font-size: 24px;
+    padding: 5px 10px;
+    margin: 0;
+}
+.btn-tab:hover {
+    background-color: #131418;
+    cursor: pointer;
+}
+.btn-tab:active {
+    background-color: #32353f;
+}
+.btn-tab.selected {
+    background-color: #4a515f;
+}
+
+.worktime-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.worktime-buttons img {
+    cursor: pointer;
+    font-size: 0.3em;
+    height: 4rem;
+    width: 4rem;
+}
+.worktime-buttons img:hover {
+    filter: brightness(0.8);
+}
+.worktime-buttons img:active {
+    filter: brightness(0.6);
+}
+/* Filter button */
+.btn-filter {
+    background-color: unset;
+    color: wheat;
+    cursor: pointer;
+    border: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.7em;
+    height: min-content;
+    margin: 5px 0;
+    padding: 5px;
+}
+.btn-filter:hover {
+    
+}
+.btn-filter:active {
+    
+}
+
+.btn-exit {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+}
+
+@media (min-width: 768px) {
+    .worktime-buttons button {
+        flex-basis: 20%;
+        font-size: 0.5em;
+    }
+    .btn {
+        font-size: 1em;
+    }
+    .btn-filter {
+        font-size: 0.6em;
+    }
+}

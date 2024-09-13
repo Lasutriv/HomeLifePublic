@@ -1,0 +1,5 @@
+# Ignores any prebuilt node modules for this project
+node_modules
+
+# Other examples
+# *.md

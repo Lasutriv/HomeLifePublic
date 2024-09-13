@@ -1,0 +1,82 @@
+version: "3.8"
+services:
+  api:
+    build: ./api
+    restart: always
+    environment:
+      CHOKIDAR_USEPOLLING: "true"  # Used for hot reloading
+    container_name: homelife_api_c
+    ports:
+      - '7778:7778'
+    volumes:
+      - /api/node_modules
+      - ./api:/api
+    networks:
+      back:
+        ipv4_address: <ip_address>
+  db:
+    image: mysql
+    container_name: homelife_mysql_c
+    restart: always
+    environment:
+      MYSQL_DATABASE: db_homeLife
+      MYSQL_ROOT_PASSWORD: <password>
+    ports:
+      - "3308:3306"
+    volumes:
+      - ~/apps/mysql:/var/lib/mysql
+      - ./mysql/data_transfer:/var/lib/mysql-files
+    networks:
+      back:
+        ipv4_address: <ip_address>
+  homelife:
+    build: ./homeLife
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      WDS_SOCKET_PORT: 7777 # The mapped port on the host machine. This is needed to make sure the hot reload works
+    container_name: homelife_c
+    ports:
+    # 3000 is react's default port - containerport/hostport - 7777 is production's due to how we configured production
+      - '7777:3000'
+    volumes:
+      - /app/node_modules
+      - ./homeLife:/app  # /dir/on/host:/dir/on/container
+      # This doesn't work entirely. When updating prod site, we'll need to build the files and place them in 
+      # /certbot/www
+      - ./certbot/www:/app/build
+    networks:
+      back:
+        ipv4_address: <ip_address>
+    stdin_open: true
+    tty: true
+  webserver:
+    container_name: 'homelife_nginx_c'
+    image: nginx:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    networks:
+      back:
+        ipv4_address: <ip_address>
+  certbot:
+    container_name: 'homelife_certbot_c'
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+    networks:
+      back:
+        ipv4_address: <ip_address>
+networks:
+  back:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: <ip_address>/<subnet_mask>
+          gateway: <gateway_ip>

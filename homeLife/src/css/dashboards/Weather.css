@@ -1,0 +1,247 @@
+.weather-tabs {
+    display: flex;
+    flex-wrap: wrap;
+}
+.weather-current {
+    border-bottom: 1px solid wheat;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.weather-current, .weather-hourly, .weather-daily .daily-forecast {
+    padding: 1rem;
+}
+.weather-current .weather-header-left {
+    align-items: start;
+    background-color: var(--app-bg-highlight);
+    border-radius: 15px;
+    height: min-content;
+    flex-basis: 49%;
+    margin: 0 1% 0 0;
+    padding: 0.5rem 1rem;
+}
+.weather-current .weather-header-right {
+    align-items: end;
+    background-color: var(--app-bg-highlight);
+    border-radius: 15px;
+    height: min-content;
+    flex-basis: 49%;
+    margin: 0 0 0 1%;
+    padding: 0.5rem 1rem;
+}
+.weather-current .weather-extras {
+    position: relative;
+    flex-basis: 100%;
+    margin: 0;
+}
+.weather-current .weather-extras .sunrise {
+    display: flex;
+    align-items: center;
+}
+.weather-current .weather-extras .sunrise svg, .weather-current .weather-extras .sunset svg {
+    margin-left: 0.5rem;
+}
+.weather-current .weather-extras .sunrise svg {
+    color: #ff6347;
+}
+.weather-current .weather-extras .sunset svg {
+    color: #ffd700;
+}
+.weather-current .weather-extras .sunset {
+    display: flex;
+    align-items: center;
+}
+.weather-current .current-forcast {
+    flex-basis: 100%;
+}
+.weather-titles {
+    display: flex;
+    border-bottom: 1px solid wheat;
+}
+.weather-hourly {
+    flex-basis: 50%;
+    width: 100%;
+}
+.weather-hourly h4 {
+    font-size: 1em;
+}
+.weather-hourly .hourly-forecast {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+}
+.weather-hourly .hourly-forecast h4 {
+    color: wheat;
+    flex-basis: 100%;
+    margin-bottom: 0;
+}
+.weather-hourly .hourly-forecast .hourly-forecast-chart {
+    flex-basis: 100%;
+    height: 24vh;
+    width: 100%;
+}
+.weather-hourly .hourly-forecast .hourly-forecast-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding-top: 1rem;
+    width: 100%;
+}
+.weather-hourly .hourly-forecast .hourly-forecast-item {
+    flex-basis: calc(100%/6);
+    background-color: var(--app-bg-highlight);
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+.weather-hourly .hourly-forecast .hourly-forecast-item .hourly-forecast-time {
+    flex-basis: 100%;
+    font-size: 0.75em;
+}
+.weather-hourly .hourly-forecast .hourly-forecast-item .hourly-forecast-temp {
+    flex-basis: 100%;
+    font-size: 1.25rem;
+}
+.weather-titles h3, .weather-daily h3 {
+    color: wheat;
+    margin-bottom: 0;
+}
+.weather-daily {
+    flex-basis: 100%;
+}
+.weather-daily .daily-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+.weather-daily .daily-forecast .daily-forecast-item {
+    flex-basis: calc(100%/2.25);
+    background-color: var(--app-bg-highlight);
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+.weather-daily .daily-forecast .daily-forecast-item .daily-forecast-day {
+    color: wheat;
+    
+}
+.weather-daily .daily-forecast .daily-forecast-item .daily-forecast-temp {
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+}
+/* if (temp>=111){
+    return "red"
+} else if (temp>=91){
+    return "orange"
+} else if (temp>=71){
+    return "yellow"
+} else if (temp>=51){
+    return "green"
+} else if (temp>=33){
+    return "blue"
+} else {
+    return "purple"
+} */
+.hourly-forecast-temp.scorching, .daily-forecast-temp.scorching > span:first-child{
+    color: red;
+}
+.hourly-forecast-temp.hot, .daily-forecast-temp.hot > span:first-child {
+    color: orange;
+}
+.hourly-forecast-temp.warm, .daily-forecast-temp.warm > span:first-child {
+    color: yellow;
+}
+.hourly-forecast-temp.cool, .daily-forecast-temp.cool > span:first-child {
+    color: green;
+}
+.hourly-forecast-temp.cold, .daily-forecast-temp.cold > span:first-child {
+    color: blue;
+}
+.hourly-forecast-temp.freezing, .daily-forecast-temp.freezing > span:first-child {
+    color: purple;
+}
+
+/* Weather radar */
+.weather-radar {
+    position: relative;
+    height: calc(93% - 10px);
+}
+.weather-radar .image-owm-map {
+    position: absolute;
+    top: 0;
+    filter: brightness(50%) saturate(1000%) contrast(1000%);
+    height: 512px;
+    width: 512px;
+    z-index: 2;
+}
+.weather-radar .leaflet-container {
+    position: absolute !important;
+    height: 512px;
+    width: 512px;
+    top: 0;
+    z-index: 1 !important;
+}
+
+@media screen and (min-width: 768px) {
+    .weather-current {
+        border-right: 1px solid wheat;
+        width: 50%;
+    }
+    .weather-hourly {
+        width: 50%;
+    }
+    .weather-titles h3 {
+        flex-basis: 50%;
+    }
+    .weather-current .weather-extras .sunrise {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .weather-current .weather-extras .sunset {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .weather-hourly .hourly-forecast .hourly-forecast-items {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .weather-daily .daily-forecast .daily-forecast-item {
+        flex-basis: calc(100%/8);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .weather-current {
+        
+    }
+    .weather-hourly {
+        border-bottom: 1px solid wheat;
+    }
+}
+
+/* iPad Pro 12.9 - horizontal */
+@media screen and (min-width: 2731px) {
+
+}
+
+/* Special cases */
+/* show-desktop */
+@media screen and (max-width: 767px) {
+    .show-desktop {
+        display: none;
+    }
+    .show-mobile {
+        display: block;
+    }
+}   
+@media screen and (min-width: 768px) {
+    .show-desktop {
+        display: block;
+    }
+    .show-mobile {
+        display: none;
+    }
+}
